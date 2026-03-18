@@ -1,0 +1,6 @@
+Pan: 90.0
+Tilt: 90.0
+Target: No
+X: 322
+Y: 208
+Color: RED
