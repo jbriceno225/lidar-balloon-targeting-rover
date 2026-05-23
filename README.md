@@ -1,76 +1,73 @@
 # Autonomous LIDAR-Guided Balloon Targeting Rover
 
-Autonomous robotic system integrating LIDAR-based navigation and computer vision for real-time target tracking and engagement.
+Autonomous robotic system integrating **LIDAR-based navigation**, **computer vision**, and **PID-controlled target tracking** on a differential-drive rover platform.
 
-## Demo Video
-[Watch Demo](https://youtu.be/bCVy1L1Pw5s)
+## Demo
+[Watch Demo Video](https://youtu.be/bCVy1L1Pw5s)
 
-Demonstrates autonomous navigation using LIDAR and vision-based target tracking with real-time control.
+<img src="media/robot.png" width="550"/>
 
-## System Overview
-<img src="media/robot.png" width="500"/>
-
-Final SCUTTLE platform with integrated LIDAR, camera system, and pan-tilt targeting mechanism.
-
-## Overview
-This project involves the development of a differential-drive robotic platform capable of navigating its environment autonomously using LIDAR data while detecting and tracking colored targets using computer vision.
-
-The system combines perception, control, and actuation to perform real-time decision-making and target engagement.
+## Project Summary
+This project uses a SCUTTLE robotic platform to navigate with LIDAR scan data while detecting and tracking colored targets through a camera. The system combines perception, control, and actuation so the rover can react to obstacles, align a pan-tilt mechanism with a target, and trigger target engagement logic once tracking is confirmed.
 
 ## Key Features
-- Autonomous navigation using LIDAR-based obstacle detection  
-- Computer vision-based color target detection and tracking  
-- PID-controlled pan-tilt system for camera alignment  
-- Real-time motor control with encoder feedback  
-- Laser activation triggered by confirmed target tracking  
+- LIDAR-based obstacle detection and autonomous navigation
+- OpenCV color segmentation for real-time target detection
+- PID-controlled pan-tilt camera alignment
+- Differential-drive motor control with encoder feedback
+- Modular layered software architecture for sensors, control, and behaviors
+- Laser activation logic based on confirmed target tracking
 
 ## System Architecture
 
-### Perception
-- LIDAR used for obstacle detection and navigation  
-- Camera used for color-based target detection  
-- Pixel offset converted into control error  
-
-### Control
-- PID controller used to align camera with target  
-- Differential drive control for robot movement  
-- Real-time adjustment based on sensor feedback  
-
-### Actuation
-- DC motors for mobility  
-- Pan-tilt servo system for camera positioning  
-- Laser activation system for target engagement  
-
+| Layer | Purpose | Example Components |
+|---|---|---|
+| L1 Hardware Interface | Direct sensor/actuator access | camera, LIDAR, motors, servos, logging |
+| L2 Control/Processing | reusable control and perception logic | color detection, PID, telemetry, speed control |
+| L3 Behaviors | system-level behaviors | camera tracking, obstacle avoidance |
+| L4 Mission Logic | final integrated behavior | target acquisition and engagement |
 
 ## My Contributions
-- Implemented LIDAR-based obstacle avoidance logic  
-- Developed OpenCV-based computer vision pipeline for color detection and tracking  
-- Designed PID control system for pan-tilt camera tracking  
-- Integrated sensors, motor drivers, encoders, and control logic into a modular system  
-- Contributed to fabrication, assembly, and gimbal integration  
-
+- Implemented LIDAR-based obstacle avoidance logic using real-time scan data.
+- Developed OpenCV-based target detection and tracking pipeline.
+- Designed PID control logic to convert target pixel offset into pan/tilt corrections.
+- Integrated camera, LIDAR, motors, encoders, and servo control into a modular system.
+- Contributed to fabrication, assembly, turret/gimbal integration, and final testing.
 
 ## Technologies Used
-- Python  
-- OpenCV (computer vision)  
-- TiM561 LIDAR  
-- DC motors with encoders  
-- Servo motors (pan-tilt system)  
-- L298N motor driver  
+- Python
+- OpenCV
+- TiM561 LIDAR
+- DC motors with encoders
+- Servo motors / pan-tilt mechanism
+- L298N motor driver
+- Node-RED telemetry visualization
+
+## Results
+- Demonstrated real-time target detection and camera tracking.
+- Integrated LIDAR obstacle sensing with rover motion control.
+- Created a layered software structure that separated hardware access, perception, control, and mission behavior.
+- Validated the full system through final demo testing and documentation.
+
+## Repository Structure
+```text
+software/   Python control, perception, telemetry, and robot behavior code
+docs/       Final report and presentation
+media/      Robot images and diagrams
+```
 
 ## Documentation
-[View Full Lab Report](docs/scuttle-lidar-vision-report.pdf)  
-[View Final Presentation](docs/final_presentation.pdf)
+- [Full Lab Report](docs/scuttle-lidar-vision-report.pdf)
+- [Final Presentation](docs/final_presentation.pdf)
 
-Includes detailed system design, LIDAR navigation logic, computer vision pipeline, PID control implementation, and mechanical design of the turret system.
-
-## Project Structure
-- `/code` -> Control scripts and system logic  
-- `/media` -> Images and diagrams  
-- `/docs` -> Lab report and presentation  
+## Notes for Future Improvement
+- Add dependency/setup instructions for running on the SCUTTLE/Raspberry Pi environment.
+- Add a wiring/interface diagram for sensors and actuators.
+- Add recorded telemetry plots or screenshots from the final demo.
 
 ## What I Learned
-- Integrating multiple sensing systems (LIDAR + vision)  
-- Applying PID control in real-time robotic systems  
-- Designing perception-to-control pipelines  
-- Building modular and scalable robotic systems  
+- Integrating multiple sensing systems in a real robotic platform
+- Building perception-to-control pipelines
+- Applying PID control to a physical pan-tilt mechanism
+- Debugging real-time sensor, motor, and camera interactions
+- Structuring robotics code into modular layers
